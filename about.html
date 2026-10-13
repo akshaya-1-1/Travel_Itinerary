@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Udupi - Culture, Heritage & Traditions | UdupiVista</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root{
+      --primary-color:#e63946; /* Red-Orange */
+      --secondary-color:#f4a261;
+      --accent-color:#2a9d8f; /* Teal */
+      --highlight-color:#e9c46a;
+      --text-dark:#2c1810;
+      --text-light:#5d4037;
+      --light-bg:#fff9f5;
+      --header-h:60px;
+      --subtle-bg: #fdf5f0; /* New subtle background color for the history rail */
+      --footer-text: #555; /* Footer text color */ /* ADDED FOOTER TEXT COLOR */
+    }
+	html,body{
+		min-width:395px;
+		}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Poppins',sans-serif;
+      color:var(--text-dark);
+      background:#fff;
+      overflow-x:hidden;
+      display: flex; /* ADDED FOR FOOTER */
+      flex-direction: column; /* ADDED FOR FOOTER */
+      min-height: 100vh; /* ADDED FOR FOOTER */
+    }
+    h1,h2,h3{font-family:'Playfair Display',serif}
+
+    /* ===== HEADER (unchanged) ===== */
+    header{
+      position:fixed; top:0; left:0; width:100%;
+      height:var(--header-h); display:flex; align-items:center; justify-content:space-between;
+      padding:4px;
+      background:#fff; box-shadow:0 3px 10px rgba(0,0,0,.1); z-index:1000;
+      transition: all 0.3s ease;
+    }
+    header.scrolled {
+      height: 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    .header-row{
+      display:flex; align-items:center; justify-content:space-between;
+      width:100%;
+    }
+    .logo{display:flex; align-items:center; gap:10px; margin-left:0;}
+    .logo img{width:50px; height:42px; object-fit:cover; border-radius:10px}
+    .logo h2{font-size:1.6rem; font-weight:700; color:#111; letter-spacing:1px}
+
+    /* Desktop Navigation */
+    .desktop-nav{display:flex; align-items:center; margin-left:auto; margin-right:0;}
+    .desktop-nav a{
+      text-decoration:none; color:#111; font-weight:600;
+      margin:0 16px; font-size:1rem; position:relative; transition:color .3s;
+    }
+    .desktop-nav a:last-child{margin-right:20px;}
+    .desktop-nav a::after{
+      content:''; position:absolute; bottom:-6px; left:0; height:2px; width:0;
+      background-color:var(--primary-color); transition:width .3s ease;
+    }
+    .desktop-nav a:hover{color:var(--primary-color)}
+    .desktop-nav a:hover::after{width:100%}
+
+    /* Mobile Navigation Toggle */
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #111;
+      margin-right: 15px;
+      z-index: 1001;
+    }
+
+    /* Mobile Navigation Menu */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background: white;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      z-index: 999;
+      transition: right 0.3s ease;
+      padding: 80px 20px 20px;
+      overflow-y: auto;
+    }
+    .mobile-nav.active {
+      right: 0;
+    }
+    .mobile-nav a {
+      display: block;
+      padding: 15px 10px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      border-bottom: 1px solid #eee;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav a:hover {
+      color: var(--primary-color);
+      padding-left: 15px;
+    }
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ===== MAIN WRAPPER (modified for footer) ===== */
+    main{
+        padding-top:var(--header-h);
+        flex-grow: 1; /* Allow main to take up space */
+    }
+
+    /* ===== SIMPLE HERO (unchanged) ===== */
+    .simple-hero {
+      padding: 30px 20px 20px;
+      background: linear-gradient(135deg, var(--light-bg) 0%, #ffffff 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .simple-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(230,57,70,0.05)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+    .simple-hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+      /* animation: fadeInUp 1s ease; REMOVED ANIMATION FOR SIMPLICITY, ADD BACK IF NEEDED */
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      font-weight: 500;
+      /* animation: fadeInUp 1s ease 0.2s both; REMOVED ANIMATION */
+    }
+
+    .hero-title span {
+      color: var(--primary-color);
+    }
+
+    /* ===== INTRODUCTION SECTION (unchanged) ===== */
+    .intro-section {
+      padding: 40px 20px;
+      background: white;
+    }
+
+    .intro-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .intro-content h2 {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .intro-content h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .intro-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+
+    .intro-highlight {
+      background: linear-gradient(120deg, var(--accent-color) 0%, var(--primary-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    /* IMAGE PRESENTATION - PARALLAX SCROLL (transitions removed) */
+    .parallax-image {
+      position: relative;
+      height: 500px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .parallax-image img {
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .parallax-image:hover img {
+      transform: scale(1.05); /* Simplified hover scale */
+    }
+
+    /* ===== ENHANCED CULTURAL EXPRESSIONS (transitions removed) ===== */
+    .cultural-forms {
+      padding: 80px 20px;
+      background: white;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 2.8rem;
+      color: var(--text-dark);
+      margin-bottom: 15px;
+    }
+
+    .section-header p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Cultural Video Section (transitions removed) */
+    .cultural-video-section {
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+      background: #000;
+      transition: all 0.5s ease;
+    }
+
+    .cultural-video-section:hover {
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    }
+
+    .cultural-video {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(230,57,70,0.2), rgba(42,157,143,0.2));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .video-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .play-button {
+      width: 90px;
+      height: 90px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+
+    .play-button:hover {
+      transform: scale(1.1);
+      background: white;
+    }
+
+    .video-title {
+      color: white;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+    }
+
+    .video-subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 1rem;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    .video-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cultural-video-section:hover .video-controls {
+      opacity: 1;
+    }
+
+    .video-control-btn {
+      background: rgba(255,255,255,0.9);
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .video-control-btn:hover {
+      transform: scale(1.1);
+      background: white;
+    }
+
+    /* Audio Controls */
+    .audio-controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+
+    .cultural-video-section:hover .audio-controls {
+      opacity: 1;
+    }
+
+    .audio-btn {
+      background: rgba(255,255,255,0.9);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .audio-btn:hover {
+      transform: scale(1.1);
+      background: white;
+    }
+
+    .volume-slider {
+      width: 80px;
+      height: 6px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .volume-slider::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Tabbed Interface for Cultural Forms (unchanged) */
+    .cultural-tabs {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tab-button {
+      padding: 15px 30px;
+      background: white;
+      border: 2px solid var(--primary-color);
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tab-button:hover {
+      background: rgba(230, 57, 70, 0.1);
+    }
+
+    .tab-button.active {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      /* animation: fadeIn 0.5s ease; REMOVED ANIMATION */
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .cultural-display {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    /* CULTURAL IMAGES (unchanged) */
+    .cultural-image {
+      border-radius: 20px;
+      overflow: hidden;
+      height: 400px;
+      position: relative;
+      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+      box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .cultural-image:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 25px 25px 70px #d9d9d9, -25px -25px 70px #ffffff;
+    }
+
+    .cultural-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(230,57,70,0.1), rgba(42,157,143,0.1));
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .cultural-image:hover::before {
+      opacity: 1;
+    }
+
+    .cultural-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+      filter: brightness(0.95);
+    }
+
+    .cultural-image:hover img {
+      transform: scale(1.08);
+      filter: brightness(1);
+    }
+
+    .cultural-details h3 {
+      font-size: 2rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .cultural-details p {
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .cultural-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cultural-feature {
+      background: var(--light-bg);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    /* ===== UNIQUE FESTIVALS SECTION (unchanged) ===== */
+    .festivals-section {
+      padding: 80px 20px;
+      background: var(--light-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .festivals-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(230,57,70,0.03)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+
+    .festivals-section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* FESTIVAL CARDS - 3D FLIP CARDS (HOVER ONLY) */
+    .festivals-showcase {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      perspective: 1000px;
+    }
+
+    .festival-card {
+      position: relative;
+      height: 450px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+    }
+
+    .festival-card:hover {
+      transform: rotateY(180deg);
+    }
+
+    .festival-front,
+    .festival-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .festival-front {
+      background: white;
+    }
+
+    .festival-back {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      text-align: center;
+      color: white;
+    }
+
+    .festival-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .festival-card:hover .festival-image {
+      transform: scale(1.1);
+    }
+
+    .festival-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
+      padding: 30px 25px;
+      color: white;
+    }
+
+    .festival-overlay h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .festival-overlay p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+
+    .festival-date {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .festival-back h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .festival-back p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+
+    .festival-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .festival-feature {
+      background: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Mobile-specific fixes for hover */
+    @media (max-width: 768px) {
+      .festival-card {
+        height: 400px;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+      
+      .festival-card:hover {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+      }
+      
+      .festival-front,
+      .festival-back {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      
+      /* Ensure hover works on touch devices */
+      @media (hover: hover) {
+        .festival-card:hover {
+          transform: rotateY(180deg);
+        }
+      }
+    }
+
+    /* ===== FLOATING MONOLITHS TIMELINE STYLES (unchanged) ===== */
+    .history-rail {
+      background: var(--subtle-bg);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .history-rail::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, var(--subtle-bg) 0%, rgba(240,240,240,0) 25%, rgba(240,240,240,0) 75%, var(--subtle-bg) 100%);
+        pointer-events: none;
+    }
+
+    .rail-header {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .rail-header .rail-title h2 {
+      font-size: 2.8rem;
+      color: var(--text-dark);
+      margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+    }
+    .rail-sub { /* Added style for subtitle */
+        font-size: 1.1rem;
+        color: var(--text-light);
+    }
+
+
+    .rail-track {
+      list-style: none;
+      margin: 0;
+      padding: 20px 0;
+      width: 100%;
+      max-width: 100vw;
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 50px;
+      justify-content: flex-start;
+    }
+    .rail-track::-webkit-scrollbar { display: none; }
+    .rail-track { scrollbar-width: none; }
+
+    .rail-card {
+      scroll-snap-align: center;
+      flex: 0 0 350px;
+      height: 500px;
+      position: relative;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: grab;
+      border-top: 10px solid var(--accent-color);
+    }
+
+    .rail-card.is-active {
+        transform: translateY(-20px) scale(1.05);
+        box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        border-color: var(--primary-color);
+    }
+
+    .card-era-tag {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: var(--primary-color);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1rem;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .card-media {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+    .card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+    .rail-card.is-active .card-media img {
+        transform: scale(1.1);
+    }
+
+    .card-body {
+        padding: 20px;
+        height: calc(100% - 200px);
+        display: flex;
+        flex-direction: column;
+    }
+    .card-body h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--text-dark);
+    }
+    .card-body p {
+        color: var(--text-light);
+        line-height: 1.6;
+        font-size: 1rem;
+        flex-grow: 1;
+    }
+
+    .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+    .card-tags li {
+        list-style: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        background: #eee;
+        color: var(--accent-color);
+        padding: 6px 12px;
+        border-radius: 999px;
+    }
+
+    /* Scroll controls positioning */
+    .rail-controls {
+      display: none;
+    }
+
+    /* Responsive adjustment for small screens */
+    @media (max-width: 768px) {
+        .rail-card {
+            flex: 0 0 80vw;
+            height: 420px;
+            margin-left: 20px;
+        }
+        .rail-track {
+            padding: 10px 0;
+            gap: 20px;
+        }
+        .card-media {
+            height: 150px;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        .card-body h3 {
+            font-size: 1.3rem;
+        }
+        .rail-header .rail-title h2 {
+            font-size: 2rem;
+        }
+    }
+
+   
+    /* ===== IMAGE MODAL (unchanged) ===== */
+    .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .image-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .image-modal .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .image-modal img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    .modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ===== SKIP LINK (unchanged) ===== */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      z-index: -9999;
+      background: var(--primary-color);
+      color: white;
+      padding: 10px;
+      border-radius: 3px;
+    }
+    .skip-link:focus, .skip-link:active {
+      left: 10px;
+      top: 10px;
+      width: auto;
+      height: auto;
+      overflow: auto;
+      z-index: 1001;
+    }
+
+    /* ===== FOOTER STYLES (ADDED) ===== */
+    footer{
+      background:#f8f8f8;
+      color:var(--footer-text); /* Use footer text color variable */
+      text-align:center;
+      padding:20px 0;
+      min-height: 80px; /* Consistent height */
+      font-size:.95rem;
+      border-top:1px solid #eee;
+      margin-top: auto; /* Push footer down */
+      flex-shrink: 0; /* Prevent footer from shrinking */
+      width: 100%; /* Ensure full width */
+    }
+
+    /* ===== RESPONSIVE STYLES (unchanged) ===== */
+    @media (max-width: 1091px) {
+      .desktop-nav { display: none; }
+      .mobile-nav-toggle { display: block; }
+      .intro-container { grid-template-columns: 1fr; gap: 30px; }
+      .parallax-image { height: 350px; }
+      .cultural-display { grid-template-columns: 1fr; }
+      .cultural-image { height: 300px; }
+    }
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-subtitle { font-size: 1.1rem; }
+      .intro-content h2 { font-size: 2rem; }
+      .section-header h2 { font-size: 2.2rem; }
+      .section-header p { font-size: 1rem; }
+      .cultural-video { height: 300px; }
+      .play-button { width: 70px; height: 70px; font-size: 1.8rem; }
+      .video-title { font-size: 1.3rem; }
+      .tab-button { padding: 12px 20px; font-size: 0.9rem; }
+      .festivals-showcase { grid-template-columns: 1fr; gap: 30px; }
+      .festival-card { height: 400px; }
+      .rail-header .rail-title h2 { font-size: 2rem; } /* Adjusted rail header */
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="header-row">
+      <div class="logo">
+        <img src="logo.png" alt="UdupiVista logo">
+        <h2>UdupiVista</h2>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="project.html">Home</a>
+        <a href="about.html" class="active">About Udupi</a>
+        <a href="places.html">Tourist Places</a>
+        <a href="food.html">Food & Cuisine</a>
+        <a href="stays.html">Stays</a>
+        <a href="planner.html">Vacation Planner</a>
+        <a href="transport.html">Transport & Tips</a>
+        <a href=" Feedback.html"> Feedback</a>
+		<a href="login.html">Login</a>
+      </nav>
+
+      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileNav">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="project.html">Home</a>
+    <a href="about.html" class="active">About Udupi</a>
+    <a href="places.html">Tourist Places</a>
+    <a href="food.html">Food & Cuisine</a>
+    <a href="stays.html">Stays</a>
+    <a href="planner.html">Vacation Planner</a>
+    <a href="transport.html">Transport & Tips</a>
+    <a href=" Feedback.html"> Feedback</a>
+	<a href="login.html">Login</a>
+  </nav>
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+  <main id="main-content">
+    <section class="simple-hero">
+      <h1 class="hero-title">About <span>Udupi</span></h1>
+      <p class="hero-subtitle">The Temple Town where divinity meets coastal beauty, creating a unique cultural tapestry</p>
+    </section>
+
+    <section class="intro-section">
+      <div class="intro-container">
+        <div class="intro-content">
+          <h2>Discover Udupi's Magic</h2>
+          <p class="intro-text">
+            Nestled between the <span class="intro-highlight">Western Ghats</span> and the <span class="intro-highlight">Arabian Sea</span>, Udupi is more than just a destination - it's an experience that touches your soul. Founded around the 13th century by Saint Madhvacharya, this sacred town has been a beacon of spiritual wisdom and cultural richness for over eight centuries.
+          </p>
+          <p class="intro-text">
+            Known as the <span class="intro-highlight">temple city of Karnataka</span>, Udupi is home to the famous Sri Krishna Temple, which attracts millions of devotees annually. But beyond its spiritual significance, Udupi boasts pristine beaches, unique art forms, and a culinary tradition that has conquered hearts worldwide.
+          </p>
+          <p class="intro-text">
+            What makes Udupi truly special is its perfect blend of ancient traditions and modern education, with institutions like Manipal University making it a hub of learning while preserving its cultural roots.
+          </p>
+        </div>
+        <div class="parallax-image">
+          <img src="udupi4.jpg" alt="Beautiful Udupi landscape with temple architecture">
+        </div>
+      </div>
+    </section>
+
+    <section class="history-rail" aria-labelledby="history-rail-title">
+      <div class="rail-header">
+        <div class="rail-title">
+          <h2 id="history-rail-title">Udupi History — <span>Monoliths of Time</span></h2>
+          <div class="rail-sub">Scroll horizontally to reveal the major eras and their impact.</div>
+        </div>
+      </div>
+
+      <ol class="rail-track" id="railTrack" role="listbox" aria-label="Historical eras">
+        <li class="rail-card is-active" role="option" aria-selected="true" data-era="13th" tabindex="0">
+          <span class="card-era-tag">13th Century</span>
+          <figure class="card-media">
+            <img src="h3.png" alt="Sri Krishna Temple">
+          </figure>
+          <div class="card-body">
+            <h3>Spiritual Foundation</h3>
+            <p>Saint Madhvacharya establishes the Sri Krishna Temple and the Dvaita school of philosophy, laying the town's spiritual bedrock.</p>
+            <ul class="card-tags">
+              <li>Sri Krishna Temple</li><li>Dvaita</li><li>Ashta Mathas</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="rail-card" role="option" data-era="14th-16th" tabindex="0">
+          <span class="card-era-tag">14th – 16th C.</span>
+          <figure class="card-media">
+            <img src="h6.jpg" alt="Vedic learning">
+          </figure>
+          <div class="card-body">
+            <h3>Golden Age of Learning</h3>
+            <p>The monastic system (Ashta Mathas) matures, fostering deep Vedic scholarship and the flourishment of local temple arts and philosophical debates.</p>
+            <ul class="card-tags">
+              <li>Vedic Learning</li><li>Temple Arts</li><li>Monasticism</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="rail-card" role="option" data-era="17th-18th" tabindex="0">
+          <span class="card-era-tag">17th – 18th C.</span>
+          <figure class="card-media">
+            <img src="h7.jpg" alt="Early Udupi kitchen or tiffin shop photo, symbolizing the start of the Masala Dosa era.">
+          </figure>
+          <div class="card-body">
+            <h3>Culinary Emergence</h3>
+            <p>The specialized temple kitchens lay the groundwork for the globally renowned **Udupi Cuisine** (pure vegetarian), becoming an economic and cultural force.</p>
+            <ul class="card-tags">
+              <li>Udupi Cuisine</li><li>Vegetarian</li><li>Kanakana Kindi</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="rail-card" role="option" data-era="19th" tabindex="0">
+          <span class="card-era-tag">19th Century</span>
+          <figure class="card-media">
+            <img src="h8.png" alt="Archival photo of the Udupi Taluk Office building with Madras roofing, symbolizing British administration.">
+          </figure>
+          <div class="card-body">
+            <h3>Colonial Influence</h3>
+            <p>The British administration improves regional roads, increasing accessibility for pilgrims while the core religious and cultural customs remain firmly intact.</p>
+            <ul class="card-tags">
+              <li>Roads</li><li>Administration</li><li>Tradition</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="rail-card" role="option" data-era="20th" tabindex="0">
+          <span class="card-era-tag">20th Century</span>
+          <figure class="card-media">
+            <img src="h1.png" alt="Manipal and growth">
+          </figure>
+          <div class="card-body">
+            <h3>Educational Revolution</h3>
+            <p>The founding and rise of Manipal University (1953) transform Udupi into a major educational and urban hub, blending old with new global influences.</p>
+            <ul class="card-tags">
+              <li>Manipal</li><li>Global Cuisine</li><li>Urban Rise</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="rail-card" role="option" data-era="21st" tabindex="0">
+          <span class="card-era-tag">21st Century</span>
+          <figure class="card-media">
+            <img src="udupi.webp" alt="21st century Udupi">
+          </figure>
+          <div class="card-body">
+            <h3>Coastal Tourism Boom</h3>
+            <p>Udupi earns global recognition as a tourism and heritage destination, focusing on sustainability and the preservation of its coastal and spiritual identity.</p>
+            <ul class="card-tags">
+              <li>Sustainability</li><li>Tourism</li><li>Heritage</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="cultural-forms">
+      <div class="section-header">
+        <h2 id="cultural-heading">Unique Cultural Expressions</h2>
+        <p>Discover the vibrant art forms that make Udupi's cultural tapestry so rich and diverse</p>
+      </div>
+
+      <div class="cultural-video-section">
+        <video class="cultural-video" id="culturalVideo" poster="https://images.unsplash.com/photo-1594736797933-d0e031503f9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+          <source src="video1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <audio id="backgroundAudio" loop>
+          <source src="song1.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+
+
+        <div class="audio-controls">
+          <button class="audio-btn" id="muteBtn" aria-label="Mute audio">
+            <i class="fas fa-volume-up"></i>
+          </button>
+          <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="1" aria-label="Volume control">
+          <button class="audio-btn" id="syncBtn" aria-label="Sync audio with video">
+            <i class="fas fa-link"></i>
+          </button>
+        </div>
+
+        <div class="video-overlay" id="videoOverlay">
+          <div class="play-button" id="playButton">
+            <i class="fas fa-play"></i>
+          </div>
+          <div class="video-title">Experience Udupi's Living Culture</div>
+          <div class="video-subtitle">Watch the vibrant traditions come to life in this immersive journey</div>
+        </div>
+        <div class="video-controls">
+          <button class="video-control-btn" id="rewindBtn" aria-label="Rewind 10 seconds">
+            <i class="fas fa-backward"></i>
+          </button>
+          <button class="video-control-btn" id="playPauseBtn" aria-label="Play/Pause">
+            <i class="fas fa-play"></i>
+          </button>
+          <button class="video-control-btn" id="fullscreenBtn" aria-label="Fullscreen">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="cultural-tabs">
+        <div class="tab-buttons">
+          <button class="tab-button active" data-tab="yakshagana">
+            <i class="fas fa-mask"></i> Yakshagana
+          </button>
+          <button class="tab-button" data-tab="pili-nalike">
+            <i class="fas fa-paw"></i> Pili Nalike
+          </button>
+          <button class="tab-button" data-tab="bhuta-kola">
+            <i class="fas fa-drum"></i> Bhuta Kola
+          </button>
+          <button class="tab-button" data-tab="kambala">
+            <i class="fas fa-bull"></i> Kambala
+          </button>
+        </div>
+
+        <div class="tab-content active" id="yakshagana">
+          <div class="cultural-display">
+            <div class="cultural-image">
+              <img src="dance1.jpg" alt="Yakshagana performance">
+            </div>
+            <div class="cultural-details">
+              <h3>Yakshagana</h3>
+              <p>A spectacular night-long dance drama combining dance, music, dialogue, costume, makeup, and stage techniques. Performances depict stories from Hindu epics with elaborate costumes and vigorous dance movements that captivate audiences throughout the night.</p>
+              <div class="cultural-features">
+                <span class="cultural-feature">All-night Performances</span>
+                <span class="cultural-feature">Elaborate Makeup</span>
+                <span class="cultural-feature">Epic Stories</span>
+                <span class="cultural-feature">Traditional Music</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="pili-nalike">
+          <div class="cultural-display">
+            <div class="cultural-image">
+              <img src="pili.jpeg" alt="Pili Nalike dance">
+            </div>
+            <div class="cultural-details">
+              <h3>Pili Nalike</h3>
+              <p>A vibrant folk dance where performers dress as tigers, showcasing acrobatic movements and energetic choreography. Traditionally performed during festivals and special occasions to ward off evil spirits and bring prosperity to the community.</p>
+              <div class="cultural-features">
+                <span class="cultural-feature">Tiger Costumes</span>
+                <span class="cultural-feature">Energetic Dance</span>
+                <span class="cultural-feature">Festival Favorite</span>
+                <span class="cultural-feature">Community Ritual</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="bhuta-kola">
+          <div class="cultural-display">
+            <div class="cultural-image">
+              <img src="udupi6.jpg" alt="Bhuta Kola ritual">
+            </div>
+            <div class="cultural-details">
+              <h3>Bhuta Kola</h3>
+              <p>A traditional ritualistic dance form where performers embody divine spirits. This ancient practice combines music, dance, and spiritual rituals to connect with ancestral spirits and seek their blessings for the community's wellbeing and prosperity.</p>
+              <div class="cultural-features">
+                <span class="cultural-feature">Spirit Embodiment</span>
+                <span class="cultural-feature">Ritualistic</span>
+                <span class="cultural-feature">Community Blessings</span>
+                <span class="cultural-feature">Ancient Tradition</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="kambala">
+          <div class="cultural-display">
+            <div class="cultural-image">
+              <img src="udupi18.jpg" alt="Kambala buffalo race in a muddy field with a farmer">
+            </div>
+            <div class="cultural-details">
+              <h3>Kambala (Buffalo Race)</h3>
+              <p>Kambala is an annual buffalo racing festival held in water-filled paddy fields (or specially prepared slush tracks). Farmers race a pair of buffaloes, controlled by a plough-like mechanism, to honor the regional deities and celebrate the harvest season.</p>
+              <div class="cultural-features">
+                <span class="cultural-feature">Buffalo Racing</span>
+                <span class="cultural-feature">Paddy Fields (Slush)</span>
+                <span class="cultural-feature">Harvest Festival</span>
+                <span class="cultural-feature">Seasonal (Nov-Mar)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="festivals-section" aria-labelledby="festivals-heading">
+      <div class="section-header">
+        <h2 id="festivals-heading">Vibrant Festivals & Celebrations</h2>
+        <p>Experience the rhythm of Udupi through its colorful festivals that blend devotion with celebration</p>
+      </div>
+
+      <div class="festivals-showcase">
+        <div class="festival-card" tabindex="0" role="button" aria-label="Learn more about Uchila Mahalaxmi Temple Dasara">
+          <div class="festival-front">
+            <img src="fest3.png" alt="Uchila Mahalaxmi Temple Dasara celebration with decorated chariots" class="festival-image">
+            <div class="festival-overlay">
+              <h3>Uchila Mahalaxmi Temple Dasara</h3>
+              <p>Grand 10-day celebration at the ancient Mahalaxmi Temple</p>
+              <span class="festival-date">October</span>
+            </div>
+          </div>
+          <div class="festival-back">
+            <h3>Uchila Mahalaxmi Temple Dasara</h3>
+            <p>Grand 10-day celebration at the ancient Mahalaxmi Temple featuring special pujas, cultural programs, and a majestic procession with decorated chariots through the streets of Udupi.</p>
+            <div class="festival-features">
+              <span class="cultural-feature">10 Days</span>
+              <span class="cultural-feature">Processions</span>
+              <span class="cultural-feature">Cultural Events</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="festival-card" tabindex="0" role="button" aria-label="Learn more about Krishna Mutta's Vitla Pindi">
+          <div class="festival-front">
+            <img src="udupi14.jpg" alt="Krishna Mutta's Vitla Pindi folk festival with traditional music" class="festival-image">
+            <div class="festival-overlay">
+              <h3>Krishna Mutta's Vitla Pindi</h3>
+              <p>Unique folk festival honoring Lord Vitthala</p>
+              <span class="festival-date">March-April</span>
+            </div>
+          </div>
+          <div class="festival-back">
+            <h3>Krishna Mutta's Vitla Pindi</h3>
+            <p>Unique folk festival honoring Lord Vitthala with traditional music, dance performances, and elaborate processions through Udupi's streets, showcasing the region's rich cultural heritage.</p>
+            <div class="festival-features">
+              <span class="cultural-feature">Folk Music</span>
+              <span class="cultural-feature">Dance</span>
+              <span class="cultural-feature">Processions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="festival-card" tabindex="0" role="button" aria-label="Learn more about Attur Church Festival">
+          <div class="festival-front">
+            <img src="fest1.avif" alt="Attur Church Festival with devotees and processions" class="festival-image">
+            <div class="festival-overlay">
+              <h3>Attur Church Festival</h3>
+              <p>Annual feast at St. Lawrence Minor Basilica</p>
+              <span class="festival-date">January</span>
+            </div>
+          </div>
+          <div class="festival-back">
+            <h3>Attur Church Festival</h3>
+            <p>Annual feast at St. Lawrence Minor Basilica attracting thousands of devotees with special masses, processions, and vibrant cultural events that showcase Udupi's religious diversity.</p>
+            <div class="festival-features">
+              <span class="cultural-feature">Religious</span>
+              <span class="cultural-feature">Cultural Events</span>
+              <span class="cultural-feature">Processions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="yr"></span> UdupiVista • Made with ❤️ in Coastal Karnataka</p>
+  </footer>
+ 
+
+  <div class="image-modal" id="imageModal" role="dialog" aria-labelledby="modalImage" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close image">
+        <i class="fas fa-times"></i>
+      </button>
+      <img src="" alt="" id="modalImage">
+    </div>
+  </div>
+
+  <script>
+    // --- ADDED FOOTER YEAR JAVASCRIPT ---
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    // --- END FOOTER YEAR JAVASCRIPT ---
+
+    // Mobile Navigation Toggle
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+    mobileNavToggle.addEventListener('click', () => {
+      const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+      mobileNav.classList.toggle('active');
+      mobileNavOverlay.classList.toggle('active');
+      mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    mobileNavOverlay.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      mobileNavOverlay.classList.remove('active');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+        mobileNav.classList.remove('active');
+        mobileNavOverlay.classList.remove('active');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        mobileNavToggle.focus();
+      }
+    });
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Image Modal (only for cultural images, not festival cards)
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    
+    // Only attach modal to cultural images, not festival cards
+    const culturalImages = document.querySelectorAll('.cultural-image img');
+    
+    culturalImages.forEach(img => {
+      img.addEventListener('click', (e) => {
+        modalImage.src = e.target.src;
+        modalImage.alt = e.target.alt;
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        modalClose.focus();
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      imageModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    imageModal.addEventListener('click', (e) => {
+      if (e.target === imageModal) {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Cultural Tabs
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // Initialize ARIA attributes for tabs
+    tabButtons.forEach((button, index) => {
+      const tabId = button.getAttribute('data-tab');
+      const tabContent = document.getElementById(tabId);
+
+      button.setAttribute('role', 'tab');
+      button.setAttribute('aria-controls', tabId);
+      button.setAttribute('id', `tab-${index}`);
+
+      tabContent.setAttribute('role', 'tabpanel');
+      tabContent.setAttribute('aria-labelledby', `tab-${index}`);
+
+      // Set initial state
+      if (button.classList.contains('active')) {
+        button.setAttribute('aria-selected', 'true');
+        tabContent.classList.add('active'); // Ensure content is displayed
+        tabContent.setAttribute('aria-hidden', 'false');
+      } else {
+        button.setAttribute('aria-selected', 'false');
+        tabContent.classList.remove('active'); // Ensure content is hidden
+        tabContent.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Tab button click handler
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+        tabContents.forEach(content => {
+          content.classList.remove('active');
+          content.setAttribute('aria-hidden', 'true');
+        });
+
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+        const activeContent = document.getElementById(tabId);
+        activeContent.classList.add('active');
+        activeContent.setAttribute('aria-hidden', 'false');
+      });
+
+      // Add keyboard navigation for tabs
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const currentIndex = Array.from(tabButtons).indexOf(button);
+          let nextIndex;
+
+          if (e.key === 'ArrowRight') {
+            nextIndex = (currentIndex + 1) % tabButtons.length;
+          } else {
+            nextIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+          }
+
+          tabButtons[nextIndex].click();
+          tabButtons[nextIndex].focus();
+        }
+      });
+    });
+
+
+    // Enhanced Video Functionality with Audio Controls
+    const culturalVideo = document.getElementById('culturalVideo');
+    const backgroundAudio = document.getElementById('backgroundAudio');
+    const videoOverlay = document.getElementById('videoOverlay');
+    const playButton = document.getElementById('playButton');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const rewindBtn = document.getElementById('rewindBtn');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const syncBtn = document.getElementById('syncBtn');
+
+    // Audio sync state
+    let isAudioSynced = true;
+
+    if (culturalVideo && backgroundAudio && videoOverlay && playButton && playPauseBtn && rewindBtn && fullscreenBtn && muteBtn && volumeSlider && syncBtn) {
+      // Play/Pause functionality
+      const togglePlay = () => {
+        if (culturalVideo.paused) {
+          culturalVideo.play();
+          if (isAudioSynced) {
+            backgroundAudio.play();
+          }
+          videoOverlay.classList.add('hidden');
+          playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+          culturalVideo.pause();
+          if (isAudioSynced) {
+            backgroundAudio.pause();
+          }
+          videoOverlay.classList.remove('hidden');
+          playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+      };
+
+      // Toggle audio sync
+      syncBtn.addEventListener('click', () => {
+        isAudioSynced = !isAudioSynced;
+
+        if (isAudioSynced) {
+          // Sync audio with video
+          backgroundAudio.currentTime = culturalVideo.currentTime;
+          if (!culturalVideo.paused) {
+            backgroundAudio.play();
+          }
+          syncBtn.innerHTML = '<i class="fas fa-unlink"></i>';
+          syncBtn.setAttribute('aria-label', 'Unsync audio from video');
+        } else {
+          // Unsync audio
+          backgroundAudio.pause();
+          syncBtn.innerHTML = '<i class="fas fa-link"></i>';
+          syncBtn.setAttribute('aria-label', 'Sync audio with video');
+        }
+      });
+
+      // Event listeners
+      playButton.addEventListener('click', togglePlay);
+      playPauseBtn.addEventListener('click', togglePlay);
+      culturalVideo.addEventListener('click', togglePlay);
+
+      // Rewind functionality
+      rewindBtn.addEventListener('click', () => {
+        culturalVideo.currentTime = Math.max(0, culturalVideo.currentTime - 10);
+        if (isAudioSynced) {
+          backgroundAudio.currentTime = culturalVideo.currentTime;
+        }
+      });
+
+      // Fullscreen functionality
+      fullscreenBtn.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          culturalVideo.requestFullscreen().catch(err => {
+            console.log(`Error attempting to enable fullscreen: ${err.message}`);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      });
+
+      // Audio controls
+      muteBtn.addEventListener('click', () => {
+        const shouldMute = !culturalVideo.muted;
+        culturalVideo.muted = shouldMute;
+        backgroundAudio.muted = shouldMute;
+        muteBtn.innerHTML = shouldMute ?
+          '<i class="fas fa-volume-mute"></i>' :
+          '<i class="fas fa-volume-up"></i>';
+        muteBtn.setAttribute('aria-label', shouldMute ? 'Unmute audio' : 'Mute audio');
+      });
+
+      volumeSlider.addEventListener('input', () => {
+        const newVolume = parseFloat(volumeSlider.value);
+        culturalVideo.volume = newVolume;
+        backgroundAudio.volume = newVolume;
+
+        // Update mute state based on volume
+        const isMuted = newVolume === 0;
+        culturalVideo.muted = isMuted;
+        backgroundAudio.muted = isMuted;
+        muteBtn.innerHTML = isMuted ?
+          '<i class="fas fa-volume-mute"></i>' :
+          '<i class="fas fa-volume-up"></i>';
+        muteBtn.setAttribute('aria-label', isMuted ? 'Unmute audio' : 'Mute audio');
+      });
+
+      // Update volume slider when video volume changes externally
+      culturalVideo.addEventListener('volumechange', () => {
+        if (!culturalVideo.muted) {
+          volumeSlider.value = culturalVideo.volume;
+        }
+        // Also update mute button icon if muted externally
+         muteBtn.innerHTML = culturalVideo.muted ?
+          '<i class="fas fa-volume-mute"></i>' :
+          '<i class="fas fa-volume-up"></i>';
+         muteBtn.setAttribute('aria-label', culturalVideo.muted ? 'Unmute audio' : 'Mute audio');
+      });
+
+
+      // Update play button when video ends
+      culturalVideo.addEventListener('ended', () => {
+        videoOverlay.classList.remove('hidden');
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        if (isAudioSynced) {
+          backgroundAudio.pause();
+          backgroundAudio.currentTime = 0;
+        }
+      });
+
+      // Sync audio playback with video when synced
+      culturalVideo.addEventListener('timeupdate', () => {
+        if (isAudioSynced && Math.abs(culturalVideo.currentTime - backgroundAudio.currentTime) > 0.5) {
+          backgroundAudio.currentTime = culturalVideo.currentTime;
+        }
+      });
+
+      // Show controls on hover
+      const videoSection = document.querySelector('.cultural-video-section');
+      let controlsTimeout;
+      const showControls = () => {
+          clearTimeout(controlsTimeout);
+          document.querySelector('.video-controls').style.opacity = '1';
+          document.querySelector('.audio-controls').style.opacity = '1';
+      };
+      const hideControls = () => {
+          if (!culturalVideo.paused) { // Don't hide if paused
+              controlsTimeout = setTimeout(() => {
+                  document.querySelector('.video-controls').style.opacity = '0';
+                  document.querySelector('.audio-controls').style.opacity = '0';
+              }, 2000); // Hide after 2 seconds of inactivity
+          }
+      };
+
+      videoSection.addEventListener('mouseenter', showControls);
+      videoSection.addEventListener('mousemove', () => { // Keep controls visible while moving mouse
+          showControls();
+          hideControls(); // Reset the hide timer
+      });
+      videoSection.addEventListener('mouseleave', hideControls);
+
+
+      // Keyboard controls for video
+      culturalVideo.addEventListener('keydown', (e) => {
+        // Prevent page scroll on space
+        if (e.key === ' ') { e.preventDefault(); }
+
+        switch(e.key) {
+          case ' ':
+          case 'k': // Common play/pause key
+          case 'Enter':
+            e.preventDefault();
+            togglePlay();
+            break;
+          case 'ArrowLeft':
+            e.preventDefault();
+            rewindBtn.click(); // Trigger click for consistency
+            break;
+          case 'ArrowRight':
+            e.preventDefault();
+             culturalVideo.currentTime = Math.min(culturalVideo.duration, culturalVideo.currentTime + 10);
+             if (isAudioSynced) { backgroundAudio.currentTime = culturalVideo.currentTime; }
+            break;
+          case 'f':
+          case 'F':
+            e.preventDefault();
+            fullscreenBtn.click();
+            break;
+          case 'm':
+          case 'M':
+            e.preventDefault();
+            muteBtn.click();
+            break;
+          case 's':
+          case 'S':
+            e.preventDefault();
+            syncBtn.click();
+            break;
+           case 'ArrowUp': // Volume up
+             e.preventDefault();
+             let volUp = Math.min(1, culturalVideo.volume + 0.1);
+             culturalVideo.volume = volUp;
+             backgroundAudio.volume = volUp;
+             volumeSlider.value = volUp;
+             break;
+           case 'ArrowDown': // Volume down
+             e.preventDefault();
+             let volDown = Math.max(0, culturalVideo.volume - 0.1);
+             culturalVideo.volume = volDown;
+             backgroundAudio.volume = volDown;
+             volumeSlider.value = volDown;
+             break;
+        }
+      });
+    }
+
+    // === Floating Monoliths Timeline Logic ===
+    (function(){
+      const track = document.getElementById('railTrack');
+      const cards = Array.from(track?.querySelectorAll('.rail-card') || []);
+
+      if(!track || !cards.length) return;
+
+      let activeIndex = 0; // Keep track of the visually centered card
+
+      const updateCardTransforms = () => {
+        const trackRect = track.getBoundingClientRect();
+        const centerX = trackRect.left + trackRect.width / 2;
+        let bestDist = Infinity;
+        let bestIdx = 0;
+
+        cards.forEach((card, i) => {
+          const cardRect = card.getBoundingClientRect();
+          const cardCenter = cardRect.left + cardRect.width / 2;
+          const dist = cardCenter - centerX;
+          const absDist = Math.abs(dist);
+
+          // Find the card closest to the center
+          if (absDist < bestDist) {
+            bestDist = absDist;
+            bestIdx = i;
+          }
+
+          // Apply subtle scale down for non-centered cards
+          const scale = 1 - Math.min(0.05, absDist / trackRect.width * 0.2); // Smaller scale effect
+          card.style.transform = `scale(${scale})`; // Only apply scale for simplicity
+          card.style.zIndex = cards.length - i; // Ensure stacking order
+        });
+
+        // Set active state for the central card
+        if (activeIndex !== bestIdx) {
+            cards[activeIndex]?.classList.remove('is-active');
+            cards[activeIndex]?.setAttribute('aria-selected', 'false');
+            cards[activeIndex]?.setAttribute('tabindex', '-1'); // Make non-active cards not focusable
+
+            activeIndex = bestIdx;
+
+            const activeCard = cards[activeIndex];
+            activeCard?.classList.add('is-active');
+            activeCard?.setAttribute('aria-selected', 'true');
+            activeCard?.setAttribute('tabindex', '0'); // Make active card focusable
+
+            // Enhance active card appearance slightly more
+             activeCard.style.transform = 'scale(1.03)'; // Slightly larger scale when active
+             activeCard.style.zIndex = cards.length + 1; // Bring to front
+        }
+      };
+
+      // Scroll helpers
+      const scrollToCard = (idx, behavior = 'smooth') => {
+        const el = cards[Math.max(0, Math.min(idx, cards.length - 1))];
+        if (el) {
+          const cardRect = el.getBoundingClientRect();
+          const trackRect = track.getBoundingClientRect();
+          // Calculate scroll position to center the card
+          const scrollLeft = track.scrollLeft + (cardRect.left - trackRect.left) - (trackRect.width / 2) + (cardRect.width / 2);
+
+          track.scrollTo({
+              left: scrollLeft,
+              behavior: behavior
+          });
+        }
+      };
+
+      // Events
+      let isScrolling;
+      track.addEventListener('scroll', () => {
+         window.clearTimeout(isScrolling); // Clear previous timeout
+         requestAnimationFrame(updateCardTransforms); // Update visuals immediately
+         // Set a timeout to run final update after scroll ends
+         isScrolling = setTimeout(updateCardTransforms, 150);
+      }, { passive: true });
+
+      window.addEventListener('resize', updateCardTransforms);
+
+      // Click on monolith centers it
+      cards.forEach((c,i)=> c.addEventListener('click', ()=> scrollToCard(i)));
+
+      // Keyboard navigation for timeline
+       track.addEventListener('keydown', (e) => {
+           if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+               e.preventDefault();
+               let nextIndex;
+               if (e.key === 'ArrowRight') {
+                   nextIndex = Math.min(activeIndex + 1, cards.length - 1);
+               } else {
+                   nextIndex = Math.max(activeIndex - 1, 0);
+               }
+               scrollToCard(nextIndex);
+               // Focus the card after scrolling
+               setTimeout(() => cards[nextIndex]?.focus(), 400); // Delay focus until scroll likely finishes
+           }
+       });
+
+
+      // Initial run
+      const initTimeline = () => {
+          if (cards.length > 0) {
+            scrollToCard(0, 'auto'); // Center first card instantly on load
+            cards[0].setAttribute('tabindex', '0'); // Make first card focusable initially
+            cards[0].classList.add('is-active');
+            cards[0].setAttribute('aria-selected', 'true');
+             // Set initial non-active cards to tabindex -1
+            for (let i = 1; i < cards.length; i++) {
+                cards[i].setAttribute('tabindex', '-1');
+            }
+          }
+          // Rerun update after initial layout settles
+          setTimeout(updateCardTransforms, 150);
+      };
+
+      window.addEventListener('load', initTimeline);
+      // Fallback for immediate initialization if load already happened
+      if (document.readyState === 'complete') {
+          initTimeline();
+      } else {
+          // Additional fallback
+          setTimeout(initTimeline, 150);
+      }
+
+    })();
+
+  </script>
+</body>
+</html>

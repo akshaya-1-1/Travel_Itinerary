@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UdupiVista — Beaches • Temples • Food</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+
+    :root{
+      --primary-color:#ffcc00;
+      --header-h:60px;
+      --fade-duration:1500ms;
+    }
+	html, body {
+  min-width: 395px;
+  width: 100%;
+  overflow-x: auto !important;
+}
+
+* {
+  min-width: 0;
+  max-width: 100%;
+}
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;color:#222;background:#fff;overflow-x:hidden;}
+    h1,h2,h3{font-family:'Playfair Display',serif}
+
+    
+    header{
+      position:fixed; top:0; left:0; width:100%;
+      height:var(--header-h); display:flex; align-items:center; justify-content:space-between;
+      padding:4px;                 
+      background:#fff; box-shadow:0 3px 10px rgba(0,0,0,.1); z-index:1000;
+    }
+    .header-row{
+      display:flex; align-items:center; justify-content:space-between;
+      width:100%;
+    }
+    .logo{display:flex; align-items:center; gap:10px; margin-left:0;}
+    .logo img{width:50px; height:42px; object-fit:cover; border-radius:10px}
+    .logo h2{font-size:1.6rem; font-weight:700; color:#111; letter-spacing:1px}
+
+    /* Desktop Navigation */
+    .desktop-nav{display:flex; align-items:center; margin-left:auto; margin-right:0;}
+    .desktop-nav a{
+      text-decoration:none; color:#111; font-weight:600;
+      margin:0 16px; font-size:1rem; position:relative; transition:color .3s;
+    }
+    .desktop-nav a:last-child{margin-right:20px;}
+    .desktop-nav a::after{
+      content:''; position:absolute; bottom:-6px; left:0; height:2px; width:0;
+      background-color:var(--primary-color); transition:width .3s ease;
+    }
+    .desktop-nav a:hover{color:var(--primary-color)} 
+    .desktop-nav a:hover::after{width:100%}
+
+    /* Mobile Navigation Toggle */
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #111;
+      margin-right: 15px;
+      z-index: 1001;
+    }
+
+    /* ===== TABLET MENU (437px - 1091px) ===== */
+    /* Sliding menu from top */
+    .tablet-nav {
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      z-index: 999;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      padding: 20px 0;
+      display: none;
+    }
+
+    .tablet-nav.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .tablet-nav a {
+      display: block;
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+      padding: 15px 25px;
+      font-size: 1.1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .tablet-nav a:last-child {
+      border-bottom: none;
+    }
+
+    .tablet-nav a:hover {
+      background-color: rgba(255, 204, 0, 0.1);
+      color: var(--primary-color);
+      padding-left: 35px;
+    }
+
+    .tablet-nav a::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .tablet-nav a:hover::before {
+      opacity: 1;
+    }
+
+    /* ===== MOBILE CARD MENU (below 437px) ===== */
+    /* Centered Card Menu */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      display: none;
+    }
+
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-card {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      width: 90%;
+      max-width: 320px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+      padding: 25px 0;
+      text-align: center;
+      display: none;
+    }
+
+    .mobile-nav-card.active {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-card-header {
+      padding: 0 25px 15px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+    }
+
+    .mobile-nav-card-header h3 {
+      font-size: 1.4rem;
+      color: #111;
+      margin: 0;
+    }
+
+    .mobile-nav-card a {
+      display: block;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 14px 25px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .mobile-nav-card a:hover {
+      background-color: rgba(255, 204, 0, 0.1);
+      color: var(--primary-color);
+    }
+
+    .mobile-nav-card a::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav-card a:hover::before {
+      opacity: 1;
+    }
+
+    .mobile-nav-card-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #777;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-nav-card-close:hover {
+      color: #111;
+    }
+
+    /* ===== MAIN WRAPPER ===== */
+    main{padding-top:var(--header-h)}
+
+    /* ===== HERO / SLIDESHOW ===== */
+    .stage-wrap{
+      position:relative; width:75%; max-width:1200px; height:600px;
+      margin:30px auto; border-radius:24px; overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.22); background:#f5f5f5;
+    }
+    .bg{position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity var(--fade-duration) ease;}
+    .bg.active{opacity:1; animation:zoom 6s ease-in-out infinite alternate}
+    @keyframes zoom{0%{transform:scale(1)}100%{transform:scale(1.07)}}
+    .hero-veil{position:absolute; inset:0; background:rgba(0,0,0,.4); border-radius:24px}
+
+    .hero{
+      position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; z-index:5; color:#fff; padding:0 20px; text-shadow:0 4px 10px rgba(0,0,0,.6);
+    }
+    .hero h1{display:flex; flex-direction:column; gap:6px; font-size:3rem; font-weight:900; line-height:1.1; margin-bottom:14px}
+    .hero h1 span{display:block}
+    .hero p{font-size:1.2rem}
+
+    /* Scroll arrow */
+    .scroll-down{
+      position:absolute; bottom:25px; left:50%; transform:translateX(-50%);
+      font-size:2rem; color:#fff; cursor:pointer; animation:bounce 1.5s infinite; z-index:10;
+      text-shadow:0 3px 6px rgba(0,0,0,.5);
+    }
+    @keyframes bounce{
+      0%,20%,50%,80%,100%{transform:translateX(-50%) translateY(0)}
+      40%{transform:translateX(-50%) translateY(-10px)}
+      60%{transform:translateX(-50%) translateY(-5px)}
+    }
+
+    /* ===== SECTIONS ===== */
+    .section{max-width:1200px; margin:0 auto; padding:60px 20px; text-align:center}
+    .section h2{font-size:2rem; margin-bottom:15px}
+    .section p.lead{font-size:1.1rem; color:#555; max-width:800px; margin:0 auto 40px}
+
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px}
+    .card{background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,.1); transition:transform .3s}
+    .card:hover{transform:translateY(-5px)}
+    .card img{width:100%; height:200px; object-fit:cover; border-radius:16px 16px 0 0}
+    .card-body{padding:15px}
+    .card h3{font-size:1.3rem; margin-bottom:8px}
+    .card p{color:#555; font-size:.95rem}
+
+    .center-row{text-align:center; margin-top:20px}
+    .cta{display:inline-block; margin-top:30px; background:var(--primary-color); color:#111; padding:12px 22px; border-radius:10px; font-weight:700; text-decoration:none; box-shadow:0 6px 14px rgba(255,204,0,.4); transition:background .3s, transform .2s}
+    .cta:hover{background:#ffd84a; transform:translateY(-2px)}
+
+    /* MODIFIED FOOTER STYLES for consistency */
+    footer{
+      background:#f8f8f8; 
+      color:#555; 
+      text-align:center; 
+      padding:20px 0; 
+      min-height: 80px; /* Set consistent min-height */
+      font-size:.95rem; 
+      border-top:1px solid #eee;
+    }
+
+    /* ===== RESPONSIVE STYLES ===== */
+    @media (max-width: 1091px) {
+      .desktop-nav {
+        display: none;
+      }
+      
+      .mobile-nav-toggle {
+        display: block;
+      }
+    }
+
+    /* Tablet Styles (437px - 1091px) */
+    @media (max-width: 1091px) and (min-width: 437px) {
+      .tablet-nav {
+        display: block;
+      }
+      
+      .stage-wrap {
+        width: 90%;
+        height: 500px;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Mobile Styles (below 437px) */
+    @media (max-width: 436px) {
+      .mobile-nav-overlay,
+      .mobile-nav-card {
+        display: block;
+		max-width:395px;
+      }
+      
+      .stage-wrap {
+        height: 350px;
+        width: 95%;
+      }
+      
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      
+      .hero p {
+        font-size: 0.9rem;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .section {
+        padding: 30px 10px;
+      }
+      
+      .section h2 {
+        font-size: 1.5rem;
+      }
+      
+      .section p.lead {
+        font-size: 1rem;
+      }
+      
+      /* Mobile Card Menu Styling for Phones */
+      .mobile-nav-card {
+        max-width: 300px;
+        border-radius: 18px;
+      }
+    }
+
+    @media (max-width: 768px) and (min-width: 437px) {
+      .stage-wrap {
+        height: 400px;
+        width: 95%;
+        margin: 20px auto;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+        gap: 4px;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .section {
+        padding: 40px 15px;
+      }
+      
+      .section h2 {
+        font-size: 1.7rem;
+      }
+      
+      .grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+    }
+
+    @media (min-width: 1092px) {
+      .tablet-nav,
+      .mobile-nav-overlay,
+      .mobile-nav-card {
+        display: none !important;
+      }
+    }
+	
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header>
+    <div class="header-row">
+      <div class="logo">
+        <img src="logo.png" alt="UdupiVista logo">
+        <h2>UdupiVista</h2>
+      </div>
+      
+      <nav class="desktop-nav">
+        <a href="project.html">Home</a>
+      <a href="about.html">About Udupi</a>
+      <a href="places.html">Tourist Places</a>
+      <a href="food.html">Food & Cuisine</a>
+      <a href="stays.html">Stays</a>
+      <a href="planner.html">Vacation Planner</a>
+      <a href="transport.html">Transport & Tips</a>
+      <a href="feedback.html"> Feedback</a>
+	  <a href="login.html">Login</a>
+      </nav>
+      
+      <button class="mobile-nav-toggle" id="mobileNavToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    
+    <nav class="tablet-nav" id="tabletNav">
+      <a href="project.html">Home</a>
+      <a href="about.html">About Udupi</a>
+      <a href="places.html">Tourist Places</a>
+      <a href="food.html">Food & Cuisine</a>
+      <a href="stays.html">Stays</a>
+      <a href="planner.html">Vacation Planner</a>
+      <a href="transport.html">Transport & Tips</a>
+      <a href="feedback.html"> Feedback</a>
+	  <a href="login.html">Login</a>
+    </nav>
+    
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    
+    <div class="mobile-nav-card" id="mobileNavCard">
+      <button class="mobile-nav-card-close" id="mobileNavClose">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="mobile-nav-card-header">
+        <h3>Explore UdupiVista</h3>
+      </div>
+      <a href="project.html">Home</a>
+      <a href="about.html">About Udupi</a>
+      <a href="places.html">Tourist Places</a>
+      <a href="food.html">Food & Cuisine</a>
+      <a href="stays.html">Stays</a>
+      <a href="planner.html">Vacation Planner</a>
+      <a href="transport.html">Transport & Tips</a>
+      <a href="feedback.html"> Feedback</a>
+	  <a href="login.html">Login</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="stage-wrap">
+      <div class="bg" id="bg1"></div>
+      <div class="bg" id="bg2"></div>
+      <div class="hero-veil"></div>
+
+      <div class="hero">
+        <div>
+          <h1>
+            <span>Explore Udupi-Where the Coast</span>
+            <span>Meets the Divine</span>
+          </h1>
+          <p>Golden beaches, timeless temples, and flavors that linger in memory.</p>
+        </div>
+      </div>
+      <div class="scroll-down" id="scrollDown">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <section id="restaurants" class="section">
+      <h2>Eat &amp; Drink in Udupi</h2>
+      <p class="lead">From temple-style thalis to legendary ice-cream sundaes—here's where to start.</p>
+      <div class="grid">
+        <article class="card">
+          <img src="hotel2.jpg" alt="Madhuram Udupi restaurant">
+          <div class="card-body">
+            <h3>Madhuram</h3>
+            <p>Authentic veg thalis with homely flavor.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="wood.jpg" alt="Woodlands Udupi">
+          <div class="card-body">
+            <h3>Woodlands</h3>
+            <p>Soft moode and rich filter coffee — Udupi's morning ritual.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="hotel1.jpg" alt="Udupi Rasoi">
+          <div class="card-body">
+            <h3>Udupi Rasoi</h3>
+            <p>Modern twist on traditional Udupi dishes.</p>
+          </div>
+        </article>
+      </div>
+      <div class="center-row"><a href="food.html" class="cta">See Full Food Guide →</a></div>
+    </section>
+
+    <section id="stays" class="section">
+      <h2>Stays</h2>
+      <p class="lead">Sea-facing resorts, city comforts, and calm homestays—pick your vibe.</p>
+      <div class="grid">
+        <article class="card">
+          <img src="hotel7.avif" alt="Country Inn Udupi near Manipal">
+          <div class="card-body">
+            <h3>Country Inn & Suites</h3>
+            <p>Comfort near Manipal. Quick drive to Malpe Beach.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="hotel5.webp" alt="The Ocean Pearl Udupi">
+          <div class="card-body">
+            <h3>The Ocean Pearl</h3>
+            <p>Elegant stay in city centre. Close to Krishna Temple.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="hotel6.jpg" alt="Boutique hotel lobby">
+          <div class="card-body">
+            <h3>Samanvay Hotel</h3>
+            <p>Modern design with traditional touches in the city centre.</p>
+          </div>
+        </article>
+      </div>
+      <div class="center-row"><a href="stays.html" class="cta">Find More Stays →</a></div>
+    </section>
+
+    <section id="itineraries" class="section">
+      <h2>Trip Plans</h2>
+      <p class="lead">Handpicked itineraries for weekends and short breaks.</p>
+      <div class="grid">
+        <article class="card">
+          <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg" alt="Temple street in the evening">
+          <div class="card-body">
+            <h3>1-Day Essentials</h3>
+            <p>Sri Krishna Matha darshan, Car Street walk, Malpe Beach sunset.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.pexels.com/photos/416676/pexels-photo-416676.jpeg" alt="Boat heading to an island">
+          <div class="card-body">
+            <h3>2-Day Coast &amp; Isles</h3>
+            <p>Malpe Beach + morning ferry to St. Mary's Island; café-hopping in town.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg" alt="Scenic coastal highway and hills">
+          <div class="card-body">
+            <h3>3-Day Explorer</h3>
+            <p>Udupi → Maravanthe sea-view drive → Agumbe rainforest &amp; sunset.</p>
+          </div>
+        </article>
+      </div>
+      <div class="center-row"><a href="planner.html" class="cta">Browse All Plans →</a></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="yr"></span> UdupiVista • Made with ❤️ in Coastal Karnataka</p>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Navigation Elements
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const tabletNav = document.getElementById('tabletNav');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    const mobileNavCard = document.getElementById('mobileNavCard');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    
+    let isMenuOpen = false;
+    
+    // Toggle mobile menu based on screen size
+    function toggleMobileMenu() {
+      const screenWidth = window.innerWidth;
+      
+      if (screenWidth <= 436) {
+        // Mobile - Card Menu
+        if (isMenuOpen) {
+          closeMobileCardMenu();
+        } else {
+          openMobileCardMenu();
+        }
+      } else if (screenWidth <= 1091) {
+        // Tablet - Sliding Menu
+        if (isMenuOpen) {
+          closeTabletMenu();
+        } else {
+          openTabletMenu();
+        }
+      }
+      
+      isMenuOpen = !isMenuOpen;
+      updateToggleIcon();
+    }
+    
+    function openMobileCardMenu() {
+      mobileNavOverlay.classList.add('active');
+      mobileNavCard.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMobileCardMenu() {
+      mobileNavOverlay.classList.remove('active');
+      mobileNavCard.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    function openTabletMenu() {
+      tabletNav.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeTabletMenu() {
+      tabletNav.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    function updateToggleIcon() {
+      const icon = mobileNavToggle.querySelector('i');
+      if (isMenuOpen) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
+    
+    function closeAllMenus() {
+      closeMobileCardMenu();
+      closeTabletMenu();
+      isMenuOpen = false;
+      updateToggleIcon();
+    }
+    
+    // Event Listeners
+    mobileNavToggle.addEventListener('click', toggleMobileMenu);
+    mobileNavClose.addEventListener('click', closeAllMenus);
+    mobileNavOverlay.addEventListener('click', closeAllMenus);
+    
+    // Close menus when clicking on links
+    const tabletNavLinks = document.querySelectorAll('.tablet-nav a');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-card a');
+    
+    tabletNavLinks.forEach(link => {
+      link.addEventListener('click', closeAllMenus);
+    });
+    
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeAllMenus);
+    });
+    
+    // Close tablet menu when clicking outside (if open)
+    document.addEventListener('click', function(event) {
+      if (isMenuOpen && window.innerWidth > 436 && window.innerWidth <= 1091) {
+        if (!tabletNav.contains(event.target) && !mobileNavToggle.contains(event.target)) {
+          closeAllMenus();
+        }
+      }
+    });
+
+    // Scroll down functionality
+    const scrollDownBtn = document.getElementById('scrollDown');
+    scrollDownBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: document.getElementById('restaurants').offsetTop - 80,
+        behavior: 'smooth'
+      });
+    });
+
+    // Slideshow
+    const images = ["img9.avif","img10.avif","img14.png"];
+    const bg1 = document.getElementById("bg1");
+    const bg2 = document.getElementById("bg2");
+    let index = 0, current = 0;
+
+    function preload(src){ return new Promise(res=>{ const i=new Image(); i.onload=()=>res(); i.src=src; }); }
+
+    async function start(){
+      if(!images.length) return;
+      try{ await Promise.all(images.map(preload)); }catch(e){}
+      bg1.style.backgroundImage = `url("${images[0]}")`;
+      bg1.classList.add("active");
+      setInterval(nextSlide, 5000);
+    }
+
+    function nextSlide(){
+      index = (index + 1) % images.length;
+      const next = images[index];
+      if(current === 0){
+        bg2.style.backgroundImage = `url("${next}")`;
+        bg2.classList.add("active");
+        bg1.classList.remove("active");
+        current = 1;
+      }else{
+        bg1.style.backgroundImage = `url("${next}")`;
+        bg1.classList.add("active");
+        bg2.classList.remove("active");
+        current = 0;
+      }
+    }
+
+    document.readyState === "loading"
+      ? document.addEventListener("DOMContentLoaded", start)
+      : start();
+  </script>
+  </div>
+</body>
+</html>
